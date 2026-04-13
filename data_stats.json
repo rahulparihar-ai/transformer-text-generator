@@ -6,6 +6,6 @@
         "val_tokens": 3039,
         "test_tokens": 3039
     },
-    "seq_len": 32,
+    "seq_len": 64,
     "batch_size": 32
 }
