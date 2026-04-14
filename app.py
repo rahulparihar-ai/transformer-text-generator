@@ -20,7 +20,7 @@ try:
     tokenizer, model = load_model_safe()
     
     if tokenizer is None or model is None:
-        st.error("Failed to load model or tokenizer. Please check if tokenizer.pkl and best_model.pt exist.")
+        st.error("Failed to load model or tokenizer. Please check if data/tokenizer.pkl and model/best_model.pt exist.")
     else:
         user_input = st.text_input("Input Text:", "")
         

@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import os
 
 from data_pipeline import prepare_pipeline
-from transformer_model import TransformerModel
+from model.transformer_model import TransformerModel
 from config import CONFIG
 
 def get_lr_scheduler(optimizer, warmup_steps, total_steps):
@@ -46,7 +46,7 @@ def train():
     print(f"Device: {device}")
     
     train_loader, val_loader, test_loader, tokenizer, stats = prepare_pipeline(
-        text_path="speare.txt",
+        text_path="data/speare.txt",
         seq_len=CONFIG["max_seq_len"],
         batch_size=32
     )
@@ -100,8 +100,8 @@ def train():
         if val_loss < best_val_loss:
             best_val_loss = val_loss
             epochs_no_improve = 0
-            torch.save(model.state_dict(), "best_model.pt")
-            print("  --> Model checkpoint saved as 'best_model.pt'.")
+            torch.save(model.state_dict(), "model/best_model.pt")
+            print("  --> Model checkpoint saved as 'model/best_model.pt'.")
         else:
             epochs_no_improve += 1
             

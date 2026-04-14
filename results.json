@@ -1,8 +1,0 @@
-{
-    "test_loss": 6.4888,
-    "test_perplexity": 657.75,
-    "top1_accuracy": 0.0944,
-    "top5_accuracy": 0.1801,
-    "baseline_accuracy": 0.000312,
-    "improvement_vs_baseline": "302.7x better"
-}

@@ -1,0 +1,3 @@
+torch>=2.0.0
+streamlit>=1.30.0
+matplotlib>=3.7.0

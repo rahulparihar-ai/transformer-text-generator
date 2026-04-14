@@ -78,7 +78,7 @@ class NextWordPredictionDataset(Dataset):
         y = self.data[idx + 1 : idx + self.seq_len + 1]
         return x, y
 
-def prepare_pipeline(text_path="speare.txt", seq_len=64, batch_size=32):
+def prepare_pipeline(text_path="data/speare.txt", seq_len=64, batch_size=32):
     """
     Executes standard mappings safely processing targets chronologically.
     """
@@ -97,7 +97,7 @@ def prepare_pipeline(text_path="speare.txt", seq_len=64, batch_size=32):
     assert tokenizer.vocab_size >= 5000, "Vocabulary failed mapping limit bounds!"
     print(f"Vocabulary configuration explicit sizes: {tokenizer.vocab_size}")
     
-    tokenizer_path = "tokenizer.pkl"
+    tokenizer_path = "data/tokenizer.pkl"
     with open(tokenizer_path, "wb") as f:
         pickle.dump(tokenizer, f)
     print(f"Tokenizer implicitly exported natively formatted to '{tokenizer_path}'.")
@@ -137,7 +137,7 @@ def prepare_pipeline(text_path="speare.txt", seq_len=64, batch_size=32):
         "batch_size": batch_size
     }
     
-    stats_path = "data_stats.json"
+    stats_path = "output/data_stats.json"
     with open(stats_path, "w") as f:
         json.dump(stats, f, indent=4)
         
@@ -147,7 +147,7 @@ if __name__ == "__main__":
     print("Executing Structural Extrapolations Mapping Configurations Directly...")
     try:
         train_loader, val_loader, test_loader, tokenizer, stats = prepare_pipeline(
-            text_path="speare.txt",
+            text_path="data/speare.txt",
             seq_len=64,
             batch_size=32
         )

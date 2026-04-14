@@ -4,22 +4,22 @@ import torch.nn.functional as F
 import pickle
 
 from data_pipeline import WordTokenizer # Ensure pickle can load the tokenizer
-from transformer_model import TransformerModel
+from model.transformer_model import TransformerModel
 from config import CONFIG
 import traceback
 
 def load_environment():
     try:
-        if not os.path.exists("tokenizer.pkl"):
+        if not os.path.exists("data/tokenizer.pkl"):
             return None, None
             
-        with open("tokenizer.pkl", "rb") as f:
+        with open("data/tokenizer.pkl", "rb") as f:
             tokenizer = pickle.load(f)
             
         model = TransformerModel()
 
-        if os.path.exists("best_model.pt"):
-            state_dict = torch.load("best_model.pt", map_location=torch.device("cpu"), weights_only=True)
+        if os.path.exists("model/best_model.pt"):
+            state_dict = torch.load("model/best_model.pt", map_location=torch.device("cpu"), weights_only=True)
             model.load_state_dict(state_dict)
             
         model.eval()
